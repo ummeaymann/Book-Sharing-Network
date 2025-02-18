@@ -1,0 +1,50 @@
+spring:
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;databaseName=book_social_network;encrypt=false
+    username: sa
+    password: sa1234
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    initialization-mode : always
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    database: sql_server
+    database-platform: org.hibernate.dialect.SQLServerDialect
+
+  mail:
+    host: localhost
+    port: 1025
+    username: shamith
+    password: shamith
+    properties:
+      mail:
+        smtp:
+          trust: "*"
+        auth: true
+        starttls:
+          enabled: true
+        connectiontimeout: 5000
+        timeout: 3000
+        writetimeout: 5000
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: "http://localhost:9090/realms/book-mate"
+application:
+  security:
+    jwt:
+      secret-key: 1223cf8077a813f09b1293369c3f0b33a6a08e3604f9ce6585e6e35a170a925b
+      expiration: 8640000
+  mailing:
+    frontend:
+      activation-url: http://localhost:4200/activate-acount
+  file:
+    uploads:
+      photos-output-path: ./uploads
+server:
+  port: 8088
